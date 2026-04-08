@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayasuriya | QA Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Poppins;
+  background:#0f0f17;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* PAGE SYSTEM */
+.page{
+  display:none;
+  height:100vh;
+  padding:60px 10%;
+  background-size:cover;
+  background-position:center;
+  overflow-y:auto;
+}
+
+/* BACKGROUNDS */
+#home{
+   display:flex;
+  justify-content:flex-start;  /* changed */
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding-top:100px;
+  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+  url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
+}
+
+#experience{
+  background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+  url('https://images.unsplash.com/photo-1521791136064-7986c2920216');
+}
+
+#projects{
+  background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+  url('https://images.unsplash.com/photo-1519389950473-47ba0277781c');
+}
+
+#skills{
+  background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+  url('https://images.unsplash.com/photo-1509395176047-4a66953fd231');
+}
+
+/* HOME */
+#home h1{font-size:50px;}
+#home h2{margin-top:10px;color:#b3b3d9;}
+
+.hero-icons{
+  display:flex;
+  gap:40px;
+  margin-top:40px;
+}
+
+.icon-box{
+  text-align:center;
+  cursor:pointer;
+}
+
+.icon-box i{
+  font-size:40px;
+  color:#6ffff1;
+}
+
+.icon-box p{
+  margin-top:10px;
+}
+
+/* RESUME */
+.resume-box{margin-top:25px;position:relative;}
+
+.resume-btn{
+  padding:12px 25px;
+  background:#8f6fff;
+  border:none;
+  color:#fff;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.resume-options{
+  position:absolute;
+  top:55px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+  display:none;
+}
+
+.resume-options a{
+  display:block;
+  padding:12px;
+  color:#fff;
+  text-decoration:none;
+}
+.profile-pic{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #6f76ff;
+  margin-bottom:20px;
+  box-shadow:0 0 20px rgba(111, 111, 255, 0.6);
+}
+/* BACK */
+.back{
+  margin-bottom:20px;
+  cursor:pointer;
+  color:#8f6fff;
+}
+
+/* GRID */
+.exp-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+/* CARD */
+.exp-card{
+  background:rgba(255,255,255,0.08);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+}
+
+.exp-card p{
+  font-size:19px;
+  font-weight:600;
+}
+
+.card-content{
+  max-height:0;
+  overflow:hidden;
+  transition:0.4s;
+}
+
+.exp-card.active .card-content{
+  margin-top:10px;
+}
+
+.card-content li{
+  font-size:14px;
+  margin:8px 0;
+  padding-left:20px;
+  position:relative;
+}
+
+.card-content li::before{
+  content:"★";
+  position:absolute;
+  left:0;
+  color:#8f6fff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div id="home" class="page">
+  <img src="Profile picture.jpg" class="profile-pic">
+  <h1>Jayasuriya P</h1>
+  <h2>Manual Tester | Mobile & Web QA </h2>
+
+  <div class="hero-icons">
+    <div class="icon-box" onclick="openPage('experience')">
+      <i class="fa-solid fa-briefcase"></i>
+      <p>Experience</p>
+    </div>
+
+    <div class="icon-box" onclick="openPage('projects')">
+      <i class="fa-solid fa-diagram-project"></i>
+      <p>Projects</p>
+    </div>
+
+    <div class="icon-box" onclick="openPage('skills')">
+      <i class="fa-solid fa-flask"></i>
+      <p>Skills</p>
+    </div>
+  </div>
+
+  <div class="resume-box">
+  <button onclick="openResume()" class="resume-btn">📄 Resume & CV </button>
+</div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="page">
+  <div class="back" onclick="goHome()">⬅ Back</div>
+  <h2>Experience</h2>
+
+  <div class="exp-grid">
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-mobile"></i>
+    <p>Mobile, Web & Tablet Testing</p>
+    <div class="card-content">
+      <ul>
+        <li>Tested applications across Android, Web & Tablet platforms</li>
+        <li>Validated UI responsiveness and device compatibility</li>
+        <li>Ensured seamless cross-platform functionality</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-vial"></i>
+    <p>Functional & Regression Testing</p>
+    <div class="card-content">
+      <ul>
+        <li>Executed functional test cases based on requirements</li>
+        <li>Performed regression testing after bug fixes</li>
+        <li>Maintained application stability across releases</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-diagram-project"></i>
+    <p>Workflow Validation</p>
+    <div class="card-content">
+      <ul>
+        <li>Validated complete end-to-end user workflows</li>
+        <li>Verified business logic and process flows</li>
+        <li>Ensured smooth navigation across modules</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-plug"></i>
+    <p>API Testing (Postman)</p>
+    <div class="card-content">
+      <ul>
+        <li>Validated REST APIs using Postman</li>
+        <li>Tested request/response data and status codes</li>
+        <li>Handled consent-based and secure APIs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-bug"></i>
+    <p>Bug Detection & Reporting</p>
+    <div class="card-content">
+      <ul>
+        <li>Identified critical crashes and logical defects</li>
+        <li>Reported bugs with severity & screenshots</li>
+        <li>Tracked issues until resolution</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-file"></i>
+    <p>Test Case & Scenario Writing</p>
+    <div class="card-content">
+      <ul>
+        <li>Created detailed test cases from requirements</li>
+        <li>Designed test scenarios for multiple modules</li>
+        <li>Maintained QA documentation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-database"></i>
+    <p>SQL & Data Validation</p>
+    <div class="card-content">
+      <ul>
+        <li>Validated backend data using SQL queries</li>
+        <li>Verified database consistency with UI data</li>
+        <li>Performed data integrity checks</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-users"></i>
+    <p>Agile & Team Collaboration</p>
+    <div class="card-content">
+      <ul>
+        <li>Participated in daily stand-ups & sprint meetings</li>
+        <li>Worked closely with developers & QA team</li>
+        <li>Quickly resolved issues through collaboration</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-shield-halved"></i>
+    <p>Healthcare Domain Testing</p>
+    <div class="card-content">
+      <ul>
+        <li>Tested healthcare-based applications</li>
+        <li>Handled patient data and consent flows</li>
+        <li>Validated secure medical workflows</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-card" onclick="toggleCard(this)">
+    <i class="fa-solid fa-gears"></i>
+    <p>STLC & SDLC Process</p>
+    <div class="card-content">
+      <ul>
+        <li>Followed complete Software Testing Life Cycle</li>
+        <li>Involved in requirement analysis to delivery</li>
+        <li>Ensured quality in each testing phase</li>
+      </ul>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="page">
+  <div class="back" onclick="goHome()">⬅ Back</div>
+  <h2>Projects</h2>
+
+  <div class="exp-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>My+ Health Application</p>
+      <div class="card-content">
+        <ul>
+          <li>End-to-end workflow testing</li>
+          <li>Validated patient registration & login</li>
+          <li>Tested appointment booking flow</li>
+          <li>UI & UX validation across devices</li>
+          <li>Regression testing after fixes</li>
+          <li>Identified critical bugs</li>
+          <li>Cross-platform testing</li>
+          <li>Ensured system stability</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>ABHA (Health ID Integration)</p>
+      <div class="card-content">
+        <ul>
+          <li>Tested consent-based APIs</li>
+          <li>Validated ABHA ID creation</li>
+          <li>Verified PHR data flow</li>
+          <li>Checked OTP authentication</li>
+          <li>Handled multiple API scenarios</li>
+          <li>Verified error handling</li>
+          <li>Data validation using Postman</li>
+          <li>Ensured security compliance</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>Attendance Geo-Fencing System</p>
+      <div class="card-content">
+        <ul>
+          <li>Tested location-based attendance</li>
+          <li>Validated GPS accuracy</li>
+          <li>Checked real-time tracking</li>
+          <li>API testing for location data</li>
+          <li>Handled edge cases (low signal)</li>
+          <li>Cross-device validation</li>
+          <li>Bug reporting & tracking</li>
+          <li>Ensured system reliability</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>Patient Summary Dashboard</p>
+      <div class="card-content">
+        <ul>
+          <li>Validated medical data display</li>
+          <li>Tested UI components</li>
+          <li>Checked data consistency</li>
+          <li>API integration validation</li>
+          <li>Verified report generation</li>
+          <li>Tested performance</li>
+          <li>Handled multi-user scenarios</li>
+          <li>Ensured accuracy of records</li>
+        </ul>
+      </div>
+    </div>
+<!-- PROJECT 5 -->
+<div class="exp-card" onclick="toggleCard(this)">
+  <p>E-Commerce Application Testing</p>
+  <div class="card-content">
+    <ul>
+      <li>Tested product browsing & search</li>
+      <li>Validated add-to-cart functionality</li>
+      <li>Checked checkout & payment flow</li>
+      <li>Tested order history & tracking</li>
+      <li>UI testing across devices</li>
+      <li>Regression testing after fixes</li>
+      <li>Handled edge cases</li>
+      <li>Ensured smooth user experience</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PROJECT 6 -->
+<div class="exp-card" onclick="toggleCard(this)">
+  <p>Login & Authentication System</p>
+  <div class="card-content">
+    <ul>
+      <li>Validated login & signup flow</li>
+      <li>Tested OTP verification</li>
+      <li>Password reset validation</li>
+      <li>Checked session handling</li>
+      <li>Security testing basics</li>
+      <li>Handled invalid credentials</li>
+      <li>Verified error messages</li>
+      <li>Ensured data protection</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PROJECT 7 -->
+<div class="exp-card" onclick="toggleCard(this)">
+  <p>Admin Dashboard Testing</p>
+  <div class="card-content">
+    <ul>
+      <li>Validated admin controls</li>
+      <li>Tested user management module</li>
+      <li>Checked data filtering & sorting</li>
+      <li>Verified reports & analytics</li>
+      <li>UI validation for dashboard</li>
+      <li>Handled large data sets</li>
+      <li>Bug tracking & reporting</li>
+      <li>Ensured performance stability</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PROJECT 8 -->
+<div class="exp-card" onclick="toggleCard(this)">
+  <p>Payment Gateway Integration</p>
+  <div class="card-content">
+    <ul>
+      <li>Tested payment transactions</li>
+      <li>Validated success & failure cases</li>
+      <li>Checked API responses</li>
+      <li>Verified refund process</li>
+      <li>Handled timeout scenarios</li>
+      <li>Ensured secure transactions</li>
+      <li>Cross-platform validation</li>
+      <li>End-to-end payment testing</li>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+  
+<!-- SKILLS -->
+<div id="skills" class="page">
+  <div class="back" onclick="goHome()">⬅ Back</div>
+  <h2>Skills</h2>
+
+  <div class="exp-grid">
+
+    <!-- SKILL 1 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>Manual Testing</p>
+      <div class="card-content">
+        <ul>
+          <li>Strong knowledge in STLC & SDLC</li>
+          <li>Test case & scenario writing</li>
+          <li>Functional & regression testing</li>
+          <li>UI & workflow validation</li>
+          <li>End-to-end testing</li>
+          <li>Smoke & sanity testing</li>
+          <li>Cross-platform testing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SKILL 2 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>API Testing (Basic)</p>
+      <div class="card-content">
+        <ul>
+          <li>Basic API testing using Postman</li>
+          <li>Request & response validation</li>
+          <li>Status code checking</li>
+          <li>JSON response understanding</li>
+          <li>Testing simple API workflows</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SKILL 3 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>SQL (Queries)</p>
+      <div class="card-content">
+        <ul>
+          <li>Writing basic SQL queries</li>
+          <li>SELECT, WHERE, JOIN usage</li>
+          <li>Filtering and sorting data</li>
+          <li>Validating data from database</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SKILL 4 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>Bug Reporting</p>
+      <div class="card-content">
+        <ul>
+          <li>Clear bug reporting with steps</li>
+          <li>Severity & priority understanding</li>
+          <li>Bug tracking and follow-up</li>
+          <li>Re-testing after bug fixes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SKILL 5 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>Agile & Team Collaboration</p>
+      <div class="card-content">
+        <ul>
+          <li>Daily stand-up participation</li>
+          <li>Working with developers</li>
+          <li>Understanding sprint workflow</li>
+          <li>Quick communication on issues</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SKILL 6 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>Healthcare Domain</p>
+      <div class="card-content">
+        <ul>
+          <li>Worked on healthcare applications</li>
+          <li>Patient workflow understanding</li>
+          <li>Consent-based system testing</li>
+          <li>Basic knowledge of medical data flow</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SKILL 7 -->
+    <div class="exp-card" onclick="toggleCard(this)">
+      <p>Tools</p>
+      <div class="card-content">
+        <ul>
+          <li>Postman (Basic)</li>
+          <li>SQL Tools</li>
+          <li>Bug Tracking Tools (JIRA or similar)</li>
+          <li>Browser DevTools</li>
+          <li>Excel (Test documentation)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function openResume(){
+  window.open("Jayasuriya_Resume & CV.pdf", "_blank");
+}
+function openPage(pageId){
+  document.querySelectorAll('.page').forEach(p=>p.style.display="none");
+  document.getElementById(pageId).style.display="block";
+}
+
+function goHome(){
+  document.querySelectorAll('.page').forEach(p=>p.style.display="none");
+  document.getElementById('home').style.display="flex";
+}
+
+function toggleCard(card){
+  card.classList.toggle('active');
+  const content = card.querySelector('.card-content');
+  content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+}
+
+function toggleResume(){
+  const menu=document.getElementById("resumeOptions");
+  menu.style.display = (menu.style.display==="block")?"none":"block";
+}
+
+window.onload=goHome;
+</script>
+
+</body>
+</html>
