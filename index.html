@@ -30,29 +30,57 @@ body{
 
 /* BACKGROUNDS */
 #home{
-   display:flex;
-  justify-content:flex-start;  /* changed */
+  display:flex;
+  justify-content:space-between;
   align-items:center;
-  flex-direction:column;
-  text-align:center;
-  padding-top:100px;
-  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-  url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
+  flex-direction:row;
+  text-align:left;
+  padding:100px 10%;
 }
 
-#experience{
-  background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
-  url('https://images.unsplash.com/photo-1521791136064-7986c2920216');
+.home-left{
+  max-width:600px;
 }
 
-#projects{
-  background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
-  url('https://images.unsplash.com/photo-1519389950473-47ba0277781c');
+.home-left h1{
+  font-size:50px;
 }
 
-#skills{
-  background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
-  url('https://images.unsplash.com/photo-1509395176047-4a66953fd231');
+.home-left h2{
+  margin-top:10px;
+  color:#b3b3d9;
+}
+
+.about{
+  margin-top:20px;
+  line-height:1.6;
+  color:#ccc;
+}
+
+.profile-pic{
+  width:260px;   /* increased size */
+  height:260px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #8f6fff;
+  box-shadow:0 0 30px #8f6fff;
+
+}
+.profile-pic{
+  outline:none;
+  border:none;
+}
+
+.profile-pic:focus{
+  outline:none;
+}
+
+.profile-pic:active{
+  outline:none;
+}
+
+#home, #experience, #projects, #skills{
+  background:#0f0f17;
 }
 
 /* HOME */
@@ -65,18 +93,24 @@ body{
   margin-top:40px;
 }
 
-.icon-box{
-  text-align:center;
+.top-nav{
+  position:fixed;
+  top:20px;
+  right:40px;
+  display:flex;
+  gap:25px;
+  z-index:1000;
+}
+
+.top-nav span{
   cursor:pointer;
+  font-size:16px;
+  color:#fff;
+  transition:0.3s;
 }
 
-.icon-box i{
-  font-size:40px;
-  color:#6ffff1;
-}
-
-.icon-box p{
-  margin-top:10px;
+.top-nav span:hover{
+  color:#8f6fff;
 }
 
 /* RESUME */
@@ -107,14 +141,16 @@ body{
   color:#fff;
   text-decoration:none;
 }
-.profile-pic{
-  width:150px;
-  height:150px;
-  border-radius:50%;
-  object-fit:cover;
-  border:3px solid #6f76ff;
-  margin-bottom:20px;
-  box-shadow:0 0 20px rgba(111, 111, 255, 0.6);
+
+
+@keyframes glow{
+  from{
+    box-shadow:0 0 10px #8f6fff;
+  }
+  to{
+    box-shadow:0 0 25px #8f6fff, 0 0 40px #8f6fff;
+  }
+
 }
 /* BACK */
 .back{
@@ -166,6 +202,34 @@ body{
   left:0;
   color:#8f6fff;
 }
+
+.floating-contact{
+  position:fixed;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  z-index:1000;
+}
+
+.contact-text{
+  font-size:14px;
+  color:#888;
+  margin-right:5px;
+}
+
+.floating-contact a{
+  color:#aaa;
+  font-size:16px;
+  text-decoration:none;
+}
+
+/* No hover effects */
+.floating-contact a:hover{
+  color:#aaa;
+}
 </style>
 </head>
 
@@ -173,30 +237,40 @@ body{
 
 <!-- HOME -->
 <div id="home" class="page">
-  <img src="Profile picture.jpg" class="profile-pic">
-  <h1>Jayasuriya P</h1>
-  <h2>Manual Tester | Mobile & Web QA </h2>
 
-  <div class="hero-icons">
-    <div class="icon-box" onclick="openPage('experience')">
-      <i class="fa-solid fa-briefcase"></i>
-      <p>Experience</p>
-    </div>
+  <!-- LEFT SIDE -->
+  <div class="home-left">
+    <h1>Jayasuriya P</h1>
+    <h2>Manual Tester | Web & Mobile QA</h2>
 
-    <div class="icon-box" onclick="openPage('projects')">
-      <i class="fa-solid fa-diagram-project"></i>
-      <p>Projects</p>
-    </div>
+    <p class="about">
+  I am a detail-oriented Manual Tester with hands-on experience in web and mobile application testing. 
+  I specialize in functional testing, regression testing, API testing, and bug tracking. 
+  I am passionate about delivering high-quality software and ensuring a smooth user experience.
+</p>
 
-    <div class="icon-box" onclick="openPage('skills')">
-      <i class="fa-solid fa-flask"></i>
-      <p>Skills</p>
+    <div class="resume-box">
+      <button onclick="openResume()" class="resume-btn">📄 Resume & CV</button>
     </div>
   </div>
 
-  <div class="resume-box">
-  <button onclick="openResume()" class="resume-btn">📄 Resume & CV </button>
+  <!-- RIGHT SIDE -->
+  <div>
+    <img src="Profile picture.jpg" class="profile-pic" onclick="openImage()">
+  </div>
+
 </div>
+
+  <div class="top-nav">
+  <span onclick="goHome()">Home</span>
+  <span onclick="openPage('experience')">Experience</span>
+  <span onclick="openPage('projects')">Projects</span>
+  <span onclick="openPage('skills')">Skills</span>
+
+</div>
+  </div>
+
+ 
   </div>
 </div>
 
@@ -575,18 +649,66 @@ body{
           <li>Excel (Test documentation)</li>
         </ul>
       </div>
-    </div>
-
-  </div>
 </div>
 
+</div>
+</div>
+
+
 <script>
+  const roles = [
+  "Manual Tester",
+  "Web & Mobile QA"
+];
+
+let i = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
+
+function typeEffect(){
+  current = roles[i];
+
+  if(!isDeleting){
+    document.getElementById("typing").innerText = current.substring(0, j++);
+    if(j > current.length){
+      isDeleting = true;
+      setTimeout(typeEffect, 1000);
+      return;
+    }
+  } else {
+    document.getElementById("typing").innerText = current.substring(0, j--);
+    if(j < 0){
+      isDeleting = false;
+      i = (i + 1) % roles.length;
+    }
+  }
+
+  setTimeout(typeEffect, isDeleting ? 50 : 100);
+}
+
+typeEffect();
+
+function openImage(){
+  document.getElementById("imgModal").style.display="flex";
+}
+
+document.getElementById("imgModal").onclick = function(){
+  this.style.display="none";
+}
+
   function openResume(){
-  window.open("Jayasuriya_Resume & CV.pdf", "_blank");
+   window.open("Jayasuriya_Resume & CV.pdf", "_blank");
 }
 function openPage(pageId){
   document.querySelectorAll('.page').forEach(p=>p.style.display="none");
   document.getElementById(pageId).style.display="block";
+
+  history.pushState({page:pageId}, "", "");
+}
+
+window.onpopstate = function(){
+  goHome();
 }
 
 function goHome(){
@@ -604,9 +726,64 @@ function toggleResume(){
   const menu=document.getElementById("resumeOptions");
   menu.style.display = (menu.style.display==="block")?"none":"block";
 }
+// IMAGE FULL VIEW
+document.querySelector(".profile-pic").onclick = function(){
+
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = 0;
+  overlay.style.left = 0;
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.background = "rgba(0,0,0,0.95)";
+  overlay.style.display = "flex";
+  overlay.style.justifyContent = "center";
+  overlay.style.alignItems = "center";
+  overlay.style.zIndex = "9999";
+
+  const img = document.createElement("img");
+  img.src = this.src;
+  img.style.maxWidth = "80%";
+  img.style.maxHeight = "80%";
+  img.style.borderRadius = "12px";
+  img.style.boxShadow = "0 0 30px #8f6fff";
+
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
+
+  // Close on click
+  overlay.onclick = function(){
+    document.body.removeChild(overlay);
+  };
+
+  // Close on ESC key
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+      if(document.body.contains(overlay)){
+        document.body.removeChild(overlay);
+      }
+    }
+  });
+};
 
 window.onload=goHome;
 </script>
+<div class="floating-contact">
 
+  <span class="contact-text">Contact</span>
+
+  <a href="tel:+919245766130">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+
+  <a href="mailto:pjayasuriya001@gmail.com">
+    <i class="fa-solid fa-envelope"></i>
+  </a>
+
+  <a href="https://linkedin.com/in/yourprofile" target="_blank">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+
+</div>
 </body>
 </html>
